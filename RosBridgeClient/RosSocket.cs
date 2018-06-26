@@ -29,11 +29,12 @@ namespace RosSharp.RosBridgeClient
     public class RosSocket
     {
         #region Public
-        public RosSocket(string url)
+        public RosSocket(string url, bool connectAutomatically = true)
         {
             webSocket = new WebSocket(url);
             webSocket.OnMessage += (sender, e) => receivedOperation((WebSocket)sender, e);
-            webSocket.Connect();
+            if (connectAutomatically)
+                webSocket.ConnectAsync();
         }
 
         public void Close()
@@ -47,7 +48,7 @@ namespace RosSharp.RosBridgeClient
             while (serviceProviders.Count > 0)
                 UnadvertiseService(serviceProviders.First().Key);
 
-            webSocket.Close();
+            webSocket.CloseAsync();
         }
 
         public delegate void ServiceHandler(object obj);
@@ -126,7 +127,12 @@ namespace RosSharp.RosBridgeClient
             sendOperation(new ServiceCall(id, service, args));
             return id;
         }
-        
+
+        public WebSocket GetWebSocketObject()
+        {
+            return webSocket;
+        }
+
         #endregion
 
         #region Private
