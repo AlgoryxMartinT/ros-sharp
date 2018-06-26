@@ -25,6 +25,8 @@ namespace RosSharp.RosBridgeClient
         {
             { "geometry_msgs/Twist", typeof(GeometryTwist) },
             { "std_msgs/String", typeof(StandardString) },
+            { "std_msgs/Float32", typeof(StandardFloat32) },
+            { "std_msgs/Float64", typeof(StandardFloat64) },
             { "geometry_msgs/Accel", typeof(GeometryAccel) },
             { "sensor_msgs/JointState", typeof(SensorJointStates) },
             { "geometry_msgs/Vector3", typeof(GeometryVector3) },
@@ -41,9 +43,12 @@ namespace RosSharp.RosBridgeClient
             { "sensor_msgs/PointField", typeof(SensorPointField) },
             { "sensor_msgs/Image", typeof(SensorImage) },
             { "sensor_msgs/CompressedImage", typeof(SensorCompressedImage) },
-            { "std_msgs/Time", typeof(StandardTime)    },
+            { "std_msgs/Time", typeof(StandardTime) },
             { "nav_msgs/MapMetaData", typeof(NavigationMapMetaData) },
-            { "nav_msgs/OccupancyGrid", typeof(NavigationOccupancyGrid)}
+            { "nav_msgs/OccupancyGrid", typeof(NavigationOccupancyGrid) },
+            { "dcmotor_msgs/Sensor", typeof(DCMotorSensor) },
+            { "dcmotor_msgs/Control", typeof(DCMotorControl) }
+
         };
         public static string RosMessageType(Type messageType)
         {

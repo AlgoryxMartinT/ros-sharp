@@ -45,6 +45,34 @@ namespace RosSharp.RosBridgeClient
         }
     }
 
+    public class StandardFloat64 : Message
+    {
+        public double data;
+        public StandardFloat64()
+        {
+            data = 0.0;
+        }
+
+        public StandardFloat64(double value)
+        {
+            data = value;
+        }
+    }
+
+    public class StandardFloat32 : Message
+    {
+        public float data;
+        public StandardFloat32()
+        {
+            data = 0.0f;
+        }
+
+        public StandardFloat32(float value)
+        {
+            data = value;
+        }
+    }
+
     public class GeometryAccel : Message
     {
         public GeometryVector3 linear;
@@ -336,5 +364,33 @@ namespace RosSharp.RosBridgeClient
     public class ParamValueByte : Message
     {
         public byte[] value;
+    }
+
+    public class DCMotorSensor : Message
+    {
+        public float motor_current;
+        public float back_emf_voltage;
+        public float motor_velocity_rpm;
+        public float motor_torque;
+        public float load_velocity_rpm;
+
+        public DCMotorSensor()
+        {
+            motor_current = 0.0f;
+            back_emf_voltage = 0.0f;
+            motor_velocity_rpm = 0.0f;
+            motor_torque = 0.0f;
+            load_velocity_rpm = 0.0f;
+        }
+}
+
+    public class DCMotorControl : Message
+    {
+        public float voltage;
+
+        public DCMotorControl()
+        {
+            voltage = 0.0f;
+        }
     }
 }
